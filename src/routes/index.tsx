@@ -1,4 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+// import Hero from "@/sections/Hero";
+// import About from "@/sections/About";
+// import Projects from "@/sections/Projects";
+// import Experience from "@/sections/Experience";
+// import Testimonials from "@/sections/Testimonials";
+// import Contact from "@/sections/Contact";
 
 export const Route = createFileRoute("/")({
   component: App,
@@ -6,8 +12,13 @@ export const Route = createFileRoute("/")({
 
 function App() {
   return (
-    <div className="p-2">
-      <h3>Welcome Home!</h3>
-    </div>
+    <main>
+      {/* <Hero />
+      <About />
+      <Projects />
+      <Experience />
+      <Testimonials />
+      <Contact /> */}
+    </main>
   );
 }
