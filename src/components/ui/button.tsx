@@ -10,6 +10,8 @@ const buttonVariants = cva("relative flex items-center justify-center gap-2", {
     variant: {
       default:
         "overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25",
+      animatedBorder:
+        "overflow-visible rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 bg-transparent border border-border text-foreground hover:border-primary/50 transition-all duration-1000 disabled:opacity-50 disabled:cursor-not-allowed group",
     },
     size: {
       default: "h-9 px-4 py-2 has-[>svg]:px-3 text-sm",
