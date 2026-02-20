@@ -1,10 +1,215 @@
+/* eslint-disable react-hooks/purity */
 import type { FC } from "react";
+import {
+  ArrowRight,
+  ChevronDown,
+  Download,
+  Github,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import HeroImg from "@/assets/hero-bg.jpg";
+import ProfileImg from "@/assets/profile-photo.jpg";
+
+const skills = [
+  "React",
+  "Vitejs",
+  "Nextjs",
+  "TypeScript",
+  "Nodejs",
+  "MySql",
+  "PostgreSQL",
+  "MongoDB",
+  "Docker",
+  "TailwindCSS",
+  "Prisma",
+  "Drizzle",
+  "Figma",
+  "Git",
+  "Tanstack",
+  "Affinity",
+];
 
 const Hero: FC = () => {
   return (
-    <>
-      <div>Hero</div>
-    </>
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Bg */}
+      <div className="absolute inset-0">
+        <img
+          src={HeroImg}
+          alt="Hero Image"
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background" />
+      </div>
+
+      {/* Green Dots */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(30)].map((_, i) => (
+          <div
+            className="absolute w-1.5 h-1.5 rounded-full opacity-60"
+            key={i}
+            style={{
+              backgroundColor: "#20B2A6",
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `slow-drift ${15 + Math.random() * 20}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <div className="space-y-8">
+            <div className="animate-fade-in">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
+                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                UI UX Designer / React Specialist
+              </span>
+            </div>
+
+            {/* Headline */}
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
+                Crafting <span className="text-primary glow-text">digital</span>
+                <br />
+                experiences with
+                <br />
+                <span className="font-serif italic font-normal text-white">
+                  precision.
+                </span>
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
+                Hi, I'm Pedro Meireles - a UI UX Designer and React specialist.
+                I build scalable and performant web applications crafting them
+                from the very fundamentals of design until each one of them
+                becomes pieces of art.
+              </p>
+            </div>
+
+            {/* CTA */}
+            <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
+              <Button size={"lg"}>
+                Contact Me <ArrowRight className="w-5 h-5" />
+              </Button>
+              <Button
+                size={"lg"}
+                variant={"animatedBorder"}
+                className="z-10 flex items-center justify-center gap-2"
+              >
+                {/* Animated SVG Border */}
+                <svg
+                  className="absolute left-0 top-0 w-full h-full pointer-events-none download-cv-border"
+                  viewBox="0 0 200 60"
+                  preserveAspectRatio="none"
+                  style={{ overflow: "visible" }}
+                >
+                  <path
+                    d="M 30,1 A 29,29 0 0 0 1,30 L 1,30 A 29,29 0 0 0 30,59 L 170,59 A 29,29 0 0 0 199,30 L 199,30 A 29,29 0 0 0 170,1 Z"
+                    fill="none"
+                    stroke="var(--color-primary)"
+                    strokeWidth="2"
+                    strokeDasharray="400 550"
+                    strokeDashoffset="400"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="animated-border-path"
+                  />
+                </svg>
+                <Download className="w-5 h-5" />
+                Download CV
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
+              <span className="text-sm text-muted-foreground">Follow me: </span>
+              {[
+                { icon: Github, href: "#" },
+                { icon: Linkedin, href: "#" },
+                { icon: Instagram, href: "#" },
+              ].map((social, i) => (
+                <a
+                  key={i}
+                  href={social.href}
+                  className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
+                >
+                  {<social.icon className="w-5 h-5" />}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column - Profile Image */}
+          <div className="relative animate-fade-in animation-delay-300">
+            {/* Profile Image */}
+            <div className="relative max-w-md mx-auto">
+              <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse" />
+              <div className="relative glass rounded-3xl p-2 glow-border">
+                {/* It's worth check this on figma later future pedro :) remember max-w-md */}
+                <img
+                  src={ProfileImg}
+                  alt="Pedro Meireles"
+                  className="w-full aspect-4/5 object-cover rounded-2xl"
+                />
+
+                {/* Floating Badge */}
+                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-sm font-medium">
+                      available for work
+                    </span>
+                  </div>
+                </div>
+
+                {/* Stats Badge */}
+                <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
+                  <div className="text-2xl font-bold text-primary">5+</div>
+                  <div className="text-xs text-muted-foreground">
+                    Years Exp.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Skills */}
+        <div className="mt-20 animate-fade-in animation-delay-600">
+          <p className="text-sm text-muted-foreground mb-6 text-center">
+            Technologies I work with
+          </p>
+          <div className="relative overflow-hidden">
+            <div className="flex animate-marquee">
+              {[...skills, ...skills].map((skill, idx) => (
+                <div key={idx} className="shrink-0 px-8 py-4 cursor-default">
+                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+                    {skill}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in animation-delay-800">
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary"
+        >
+          <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <ChevronDown className="w-6 h-6 animate-bounce" />
+        </a>
+      </div>
+    </section>
   );
 };
 

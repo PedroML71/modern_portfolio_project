@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { useEffect, useState, type FC } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -19,8 +20,26 @@ const navLinks = [
 ];
 
 const Navbar: FC = () => {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 bg-transparent py-5">
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        isScrolling && "glass-strong py-3",
+        !isScrolling && "bg-transparent py-5",
+      )}
+    >
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
