@@ -3,6 +3,7 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -82,19 +83,20 @@ const Navbar: FC = () => {
 
             <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link, index) => (
-                <a
-                  href={link.href}
-                  key={index}
-                  className="text-lg text-muted-foreground hover:text-foreground py-2"
-                >
-                  {link.label}
-                </a>
+                <SheetClose asChild key={index}>
+                  <a
+                    href={link.href}
+                    className="text-lg text-muted-foreground hover:text-foreground py-2"
+                  >
+                    {link.label}
+                  </a>
+                </SheetClose>
               ))}
 
               <SheetFooter>
-                <Button asChild size={"sm"}>
-                  Contact Me
-                </Button>
+                <SheetClose asChild>
+                  <Button size={"sm"}>Contact Me</Button>
+                </SheetClose>
               </SheetFooter>
             </div>
           </SheetContent>
