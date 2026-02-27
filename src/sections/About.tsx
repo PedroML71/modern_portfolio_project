@@ -78,7 +78,7 @@ const About: FC = () => {
           </div>
 
           {/* Right Column */}
-          <div className="grid s,:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-6">
             {highlights.map((item, idx) => (
               <div
                 key={idx}
